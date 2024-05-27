@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- BOOTSTRAP -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    {% block head_content%}
+    <title>Document</title>
+    {% endblock %}
+
+    
+    <style>
+        
+    .navbar {
+        
+        margin-bottom: 55px;
+    }
+    
+    .navbar-nav .nav-link {
+        color: #e5e5e5; /* Color del texto de los enlaces */
+        font-weight: bold;
+    }
+    .navbar-nav .nav-link:hover {
+        color: #f6c337; /* Color del texto al pasar el ratón */
+    }
+    .logo-icon {
+        width: 80px; /* Ajusta el ancho del logo según sea necesario */
+        height: auto; /* Permite que la altura se ajuste automáticamente para mantener la proporción */
+        border-radius: 75px;
+    }
+    </style>
+
+    {% block css_personalizado %}
+    
+    {% endblock %}
+
+</head>
+<body>
+     <!-- Navbar Común -->
+<nav class="navbar navbar-expand-lg  bg-dark">
+    <div class="container">
+        <!-- Logo 
+        <a class="navbar-brand" href="#">Logo</a>-->
+        <a class="navbar-brand">
+            <img src="/static/img/logowelcome23.jpg" alt="Logo" class="logo-icon">
+        </a>
+        
+
+        <!-- Botón de Menú para Dispositivos Móviles -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        {% block nav_content %}
+        {% endblock%}
+       
+    </div>
+</nav>
+    {% block content_body %}
+    {% endblock%}
+
+
+    
+
+    <!-- Agrega los scripts de Bootstrap al final del cuerpo del documento -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    {% block script_personalizados%}
+    {% endblock %}
+    
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% extends "baseMenuCompra.html" %}
+    
+    {% block head_content%}
+    <title>Categorias de comidas</title>
+    {% endblock %}
+    
+    /* Estilos personalizados */
+    {% block css_personalizado %}
+    <style>
+        
+        body {
+            /*padding: 20px;*/
+            padding-top: 25px;  /*Ajusta el espacio para el navbar NUEVO*/
+            background-color: #333; /* Color de fondo */
+        }
+        .category-item {
+            margin-bottom: 20px;
+            background-color: #242424; /* Color de fondo de las categorías */
+            border-radius: 10px; /* Bordes redondeados */
+            padding: 10px;
+        }
+        .category-item img {
+            max-width: 100%; /* Ajusta el tamaño máximo de las imágenes */
+            display: block;
+            margin: 0 auto; /* Centra las imágenes horizontalmente */
+            border-radius: 10px; /* Bordes redondeados para las imágenes */
+        }
+        .category-item h3 {
+            color: #f6c337; /* Color del texto de las categorías */
+            text-align: center; /* Centra el texto */
+            margin-top: 10px;
+        }
+        
+    </style>
+    {% endblock %}
+    
+
+    {% block nav_content %}
+    
+    <!-- nav -->
+     <!-- Contenido del Navbar -->
+     <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <!-- Opción "Volver Inicio" -->
+          <!-- Opción "Volver Inicio" -->
+<li class="nav-item">
+    <a href="{% url 'inicio' %}" id="back-home" class="btn btn-link nav-link" style="font-size: 25px;">Volver Inicio</a>
+</li>
+
+
+        </ul>
+    </div>
+    <!-- fin nav-->
+    {% endblock%}
+
+        {% block content_body %}
+
+        <div class="container">
+            <h1 class="text-center text-white display-4" style="margin-bottom: 60px;">Categorías</h1>
+            
+            <div class="row">
+                {% for category in categories %}
+                <div class="col-md-3">
+                    <div class="category-item">
+                        <a href="{% url 'menucompra' category.category_id %}">
+                            <img src="{{ category.image_url }}" alt="{{ category.category_name }}">
+                            <h3>{{ category.category_name }}</h3>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+    {% endblock %}
+    
+    {% block script_personalizados%}
+
+
+    {% endblock %}

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+{% extends "baseMenuCompra.html" %}
+
+{% block head_content %}
+<title>Añadir Producto</title>
+{% endblock %}
+
+{% block css_personalizado %}
+<style>
+    body {
+        background-color: #2e2e2e; /* Gris oscuro */
+        padding: 20px;
+    }
+    .btn-primary {
+        background-color: #f6c337;
+        color: #242424;
+        border: none;
+    }
+    .btn-primary:hover {
+        background-color: #e5b636; /* Color al pasar el ratón */
+    }
+    .card {
+        background-color: #242424;
+        color: #f6c337;
+        border: none;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+    .card-body {
+        padding: 20px;
+    }
+    .form-group label {
+        font-weight: bold;
+        color: #f6c337;
+    }
+    .form-control {
+        background-color: #3a3a3a;
+        border: 1px solid #f6c337;
+        color: #f6c337;
+    }
+    .form-control::placeholder {
+        color: #e5e5e5;
+    }
+    .form-control:focus {
+        background-color: #3a3a3a;
+        color: #f6c337;
+    }
+</style>
+{% endblock %}
+
+{% block nav_content %}
+    
+    <!-- nav -->
+     <!-- Contenido del Navbar -->
+     <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <!-- Opción "Volver Inicio" -->
+          <!-- Opción "Volver Inicio" -->
+<li class="nav-item">
+    <a href="javascript:window.close();"  class="btn btn-link nav-link" style="font-size: 25px;">Salir</a>
+</li>
+
+
+        </ul>
+    </div>
+    <!-- fin nav-->
+    {% endblock%}
+
+{% block content_body %}
+<div class="container">
+    <h1 class="text-center text-white display-4" style="margin-bottom: 30px;">Añadir Nuevo Producto</h1>
+    <div class="card">
+        <div class="card-body">
+            <form method="POST" enctype="multipart/form-data" class="form-horizontal" id="add-product-form" autocomplete="off">
+                {% csrf_token %}
+                <div class="form-group row">
+                    <label for="{{ form.category.id_for_label }}" class="col-sm-2 col-form-label">{{ form.category.label }}</label>
+                    <div class="col-sm-10">
+                        {{ form.category }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ form.product_name.id_for_label }}" class="col-sm-2 col-form-label">{{ form.product_name.label }}</label>
+                    <div class="col-sm-10">
+                        {{ form.product_name }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ form.description.id_for_label }}" class="col-sm-2 col-form-label">{{ form.description.label }}</label>
+                    <div class="col-sm-10">
+                        {{ form.description }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ form.photo.id_for_label }}" class="col-sm-2 col-form-label">{{ form.photo.label }}</label>
+                    <div class="col-sm-10">
+                        {{ form.photo }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="{{ form.price.id_for_label }}" class="col-sm-2 col-form-label">{{ form.price.label }}</label>
+                    <div class="col-sm-10">
+                        {{ form.price }}
+                    </div>
+                </div>
+                <div class="form-group row text-center">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-primary">Añadir Producto</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="successModalLabel">Éxito</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Producto añadido correctamente.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="closeModalButton">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+{% block script_personalizados %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('add-product-form');
+        const closeModalButton = document.getElementById('closeModalButton');
+
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(form);
+
+            fetch("{% url 'add_product' %}", {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    $('#successModal').modal('show');
+                    closeModalButton.addEventListener('click', function() {
+                        window.close();
+                    });
+                } else {
+                    alert('Hubo un error al añadir el producto.');
+                }
+            })
+            .catch(error => {
+                alert('Error al procesar la solicitud.');
+            });
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+{% extends "menu_compra/menucompra.html" %}
+
+
+{% block nav_content %}
+    
+<!-- nav -->
+<!-- Contenido del Navbar -->
+<div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+        <!-- Opción "Volver Categorías para Editar" -->
+        <li class="nav-item">
+            <a href="{% url 'select_category_to_edit' %}" class="btn btn-link nav-link" style="font-size: 25px;">Volver a Categorías para Editar</a>
+        </li>
+        
+       
+    </ul>
+</div>
+<!-- fin nav-->
+{% endblock %}
+
+{% block content_body %}
+<div class="container">
+    <h1 class="text-center text-white display-4" style="margin-bottom: 60px;">Productos para Editar</h1>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Imagen</th>
+                    <th>Precio</th>
+                    <th>Modificar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>{{ product.product_name }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>
+                        {% if product.photo %}
+                            <img src="{{ product.photo.url }}" alt="Imagen del producto" class="product-image">
+                        {% else %}
+                            <p>No hay imagen</p>
+                        {% endif %}
+                    </td>
+                    <td>{{ product.price }}</td>
+                    <td style="text-align: center;">
+                        <a href="{% url 'edit_product' product.pk %}" class="btn btn-primary">Editar</a>
+                      
+                        <a href="{% url 'delete_product' product.pk %}" class="btn btn-danger">Eliminar</a>
+                    </td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+

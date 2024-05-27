@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block head_content %}
+<title>Iniciar Sesión</title>
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/css/cssLogin.css">
+
+{% endblock %}
+
+{% block css_personalizado %}
+<style>
+
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+    }
+    .container {
+        flex: 1;
+        
+    }
+       footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
+    }
+</style>
+{% endblock%}
+
+{% block content_body %}
+
+
+
+<div class="container h-100" style="margin-bottom: 10px;">
+    <div class="d-flex justify-content-center h-100">
+        <div class="user_card">
+            <div class="d-flex justify-content-center">
+                <div class="brand_logo_container">
+                    <!--    
+<img src="https://cdn.freebiesupply.com/logos/large/2x/pinterest-circle-logo-png-transparent.png"
+                        class="brand_logo" alt="Logo">
+                    -->
+                    <img src="/static/img/logowelcome23.jpg" class="brand_logo" alt="Logo">
+                    <!-- 
+                        
+                    -->
+                    
+                </div>
+            </div>
+            <div class="d-flex justify-content-center form_container">
+                <form action="{% url 'login' %}" method="POST" autocomplete="off">
+
+                    {% csrf_token %}
+
+                    <!--
+                    <div class="input-group mb-3">
+                        <div class="input-group-append">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" name="username" class="form-control input_user" value placeholder="usuario">
+                    </div>
+                -->
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend" style="border-radius: 5px;">
+                        <span class="input-group-text "><i class="fas fa-user" ></i></span>
+                    </div>
+                    <input type="text" name="username" class="form-control input_user " style="border-radius: 5px;" value placeholder="usuario">
+                </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="password" name="password"  class="form-control input_pass" style="border-radius: 5px;" value placeholder="contraseña">
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <div>
+                            <div class="input-group-append">
+                                <input type="checkbox" id="show-password">
+                                <label class="custom-control-label" for="show-password">Ver Contraseña</label>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="d-flex justify-content-center mt-3 login_container">
+                        <button type="submit" name="button" class="btn login_btn">Iniciar Sesión</button>
+                    </div>
+                </form>
+                
+            </div>
+            
+
+            <div class="mt-4">
+                {% if error %}
+                    <p class="alert alert-danger">{{error}}</p>
+                {% endif %}
+            </div>
+            
+            
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+<footer style="background-color: #242424; color: #ffffff; padding: 20px 0;margin-top: 20px;">
+    <div class="container text-center">
+     
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <a href="{% url 'inicio' %}" style="background-color: #ddd; padding: 10px 20px; border-radius: 5px; color: #333; text-decoration: none;">Ir a la página de inicio</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- Metodo para cambiar la visibilidad de la contraseña al escribirla -->
+<script>
+    document.getElementById('show-password').addEventListener('change', function() {
+var passwordInput = document.querySelector('.input_pass');
+if (this.checked) {
+    passwordInput.setAttribute('type', 'text');
+} else {
+    passwordInput.setAttribute('type', 'password');
+}
+});
+</script>
+    
+
+{% endblock%}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+{% extends "baseMenuCompra.html" %}
+
+{% block head_content %}
+    <title>Lista de productos</title>
+{% endblock %}
+
+<!-- Personaliza los estilos -->
+{% block css_personalizado %}
+<style>
+    /* Estilos personalizados */
+    body {
+        padding: 20px;
+        background-color: #333; /* Color de fondo */
+    }
+    .product-image {
+        max-width: 100px; /* Tamaño máximo de la imagen */
+    }
+    /* Estilos para la tabla */
+    table {
+        background-color: #f6c337; /* Color de fondo de la tabla */
+        color: #242424; /* Color del texto */
+    }
+    th, td {
+        border-color: #242424; /* Color del borde */
+        text-align: center;
+        vertical-align: middle;
+    }
+    th {
+        background-color: #242424; /* Color de fondo de las celdas del encabezado */
+        color: #f6c337; /* Color del texto del encabezado */
+    }
+    .description-box {
+        background-color: #242424; /* Color de fondo del cuadro de descripción */
+        color: #f6c337; /* Color del texto del cuadro de descripción */
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock %}
+    
+{% block nav_content %}
+<!-- Contenido del Navbar -->
+<div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+        <!-- Opción "Volver Inicio" -->
+        <li class="nav-item">
+            <a href="{% url 'categorias' %}" class="btn btn-link nav-link" style="font-size: 25px;">Regresar</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block content_body %}
+<div class="container">
+    <div class="description-box">
+        <p>Selecciona los productos y la cantidad, una vez que hayas seleccionado todo lo deseado, haz clic en "Finalizar".</p>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Imagen</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Añadir al carrito</th>
+                    {% block column_edit%}
+                    {%endblock%}
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <form id="product-selection-form" action="{% url 'finalizar_seleccion' category.category_id %}" method="post">
+                    {% csrf_token %}
+                    {% for product in products %}
+                    <tr>
+                        <td>{{ product.product_name }}</td><!-- Nombre del producto -->
+                        <td>{{ product.description }}</td><!-- Descripción del producto -->
+                        <td><img src="{{ product.photo.url }}" alt="Imagen del producto" class="product-image">
+                        </td>
+                        <td>{{ product.price }}</td><!-- Precio del producto -->
+                        <td style="text-align: center;">
+                            <select name="quantity_{{ product.product_id }}" id="quantity_{{ product.product_id }}">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                            </select>
+                        </td>
+                        <td style="text-align: center;">
+                            <input type="checkbox" name="carrito_{{ product.product_id }}" id="carrito_{{ product.product_id }}" value="{{ product.product_id }}">
+                        </td>
+                        
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <!-- Agrega una nueva fila para el botón "Finalizar" -->
+                        <td colspan="6" style="text-align: center;">
+                            <input type="submit" value="Finalizar" style="margin-top: 10px;" id="btn-finalizar">
+                        </td>
+                        {%block row%}
+                        {%endblock%}
+
+                    </tr>
+                </form>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block script_personalizados %}
+<script>
+    // Para que el boton "finalizar" funcione fuera del formulario
+    document.addEventListener('DOMContentLoaded', function() {
+        // Obtener referencia al formulario y al botón
+        var form = document.getElementById('product-selection-form');
+        var btnFinalizar = document.getElementById('btn-finalizar');
+
+        // Agregar un evento al formulario para escuchar el envío
+        form.addEventListener('submit', function(event) {
+            // Obtener todos los checkboxes
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            var isChecked = false;
+
+            // Verificar si al menos uno está marcado
+            checkboxes.forEach(function(checkbox) {
+                if (checkbox.checked) {
+                    isChecked = true;
+                }
+            });
+
+            // Si no hay ninguno marcado, detener el envío del formulario
+            if (!isChecked) {
+                event.preventDefault();
+                alert('Por favor, seleccione al menos un producto antes de finalizar.');
+            }
+        });
+    });
+</script>
+{% endblock %}
