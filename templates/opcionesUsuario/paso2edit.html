@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 {% extends "menu_compra/menucompra.html" %}
 
+{% block head_content%}
+<title>Productos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+{% endblock %}
 
 {% block nav_content %}
     
 <!-- nav -->
 <!-- Contenido del Navbar -->
-<div class="collapse navbar-collapse" id="navbarNav">
+<div id="navbarNav">
     <ul class="navbar-nav ml-auto">
         <!-- Opción "Volver Categorías para Editar" -->
         <li class="nav-item">
@@ -21,7 +26,7 @@
 
 {% block content_body %}
 <div class="container">
-    <h1 class="text-center text-white display-4" style="margin-bottom: 60px;">Productos para Editar</h1>
+    <h1 class="text-center text-white display-4" style="margin-bottom: 60px;">Productos para Editar 1</h1>
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>
@@ -47,9 +52,9 @@
                     </td>
                     <td>{{ product.price }}</td>
                     <td style="text-align: center;">
-                        <a href="{% url 'edit_product' product.pk %}" class="btn btn-primary">Editar</a>
+                        <a href="{% url 'edit_product' product.pk %}" class="btn btn-primary" style="margin: 5px;">Editar</a>
                       
-                        <a href="{% url 'delete_product' product.pk %}" class="btn btn-danger">Eliminar</a>
+                        <a href="{% url 'delete_product' product.pk %}" class="btn btn-danger" style="margin: 5px;">Eliminar</a>
                     </td>
                     
                 </tr>

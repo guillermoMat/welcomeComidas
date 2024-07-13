@@ -57,8 +57,8 @@ urlpatterns = [
     path('eliminar-producto/<int:product_id>/', compra_views.delete_product, name='delete_product'),
 
     #eliminar foto cuando se edita un producto
-    path('delete_old_photo/', compra_views.delete_old_photo, name='delete_old_photo'),
-    path('clear_old_photo_session/', compra_views.clear_old_photo_session, name='clear_old_photo_session'),
+    #path('delete_old_photo/', compra_views.delete_old_photo, name='delete_old_photo'),
+    #path('clear_old_photo_session/', compra_views.clear_old_photo_session, name='clear_old_photo_session'),
 
     #path('test-delete-file/', compra_views.test_delete_file, name='test_delete_file'),
 

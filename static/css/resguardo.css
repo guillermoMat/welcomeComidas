@@ -1,320 +1,236 @@
 /* Reset de estilos */
+/* Restablecer márgenes y padding */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* Estilos generales */
-  body {
-    font-family: Arial, sans-serif;
-    min-height: 100vh; /* Establecer altura mínima para ocupar toda la altura de la ventana */
-    display: flex;
-    flex-direction: column; /* Alinear contenido en columna */
-  }
-  
-  .container {
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  /* Navbar */
-  /* Estilos para el navbar */
-  .navbar {
-    background-color: #f6c337; /* Color de fondo predeterminado #333*/
-    overflow: hidden;
-    padding: 20px 0; /* Añade un relleno superior e inferior */
-  }
-  .navbar a{
-    padding: 10px 20px;
-    border-radius: 20px; /* Redondea las esquinas del contenedor */
-  }
-  /* Cambio de color al pasar el mouse por encima */
-  .navbar a:hover {
-    background-color: #ddd; /* Cambia al color deseado */
-    color: black; /* Cambia el color del texto */
-    
-  }
-  /*
-  .navbar {
-    background-color: #f6c337;
-    padding: 20px 0;
-  }
-  */
-  
-  
-  .navbar-brand {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .nav-links {
-    list-style: none;
-    display: flex;
-    justify-content: center; /* Centra los elementos horizontalmente */
-    align-items: center;
-    flex-grow: 1; /* Permite que el contenedor crezca para ocupar el espacio disponible */
-  }
-  
-  .nav-links li {
-    margin-right: 30px;
-  }
-  
-  .nav-links li:last-child {
-    margin-right: 0; /* Elimina el margen derecho del último elemento */
-  }
-  .nav-links li a {
-    text-decoration: none;
-    color: #242424;
-    font-weight: bold;
-    font-size: 22px;
-    
-  }
-  .navbar li a:hover {
-    background-color: #ddd; /* Cambia al color deseado */
-    color: black; /* Cambia el color del texto */
-    padding: 10px 14px
-  }
-  .btn-login {
-    padding: 10px 20px;
-    background-color: #333;
-    border: none;
-    border-radius: 5px;
-    color: #ffffff;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .btn-login:hover {
-    background-color: #555;
-  }
-  
-  
-  /* Media queries */
-  @media only screen and (max-width: 768px) {
-    .navbar .container {
-      flex-direction: column;
-      align-items: center;
-    }
-    .navbar-brand {
-      display: none; /* Ocultar la marca del navbar en pantallas pequeñas */
-    }
-  
-    .nav-links {
-      margin-top: 20px;
-      margin-right: 30px;
-      display: none; /* Ocultar los enlaces del navbar en pantallas pequeñas */
-    }
-  
-    .btn-login {
-      margin-top: 20px;
-    }
-  
-    .navbar-brand .fa {
-      font-size: 4vw;
-      margin-right: 0; /* Ajusta el margen para dispositivos móviles */
-    }
-  }
-  /* Estilos para el navbar en PC */
-  @media only screen and (min-width: 769px) {
-    .navbar-brand {
-      display: block; /* Mostrar la marca del navbar en pantallas grandes */
-    }
-    .navbar-brand .fa {
-      font-size: 50px;
-      margin-right: 10px;
-    }
-  
-    .nav-links {
-      display: flex; /* Mostrar los enlaces del navbar en pantallas grandes */
-      justify-content: center; /* Centra los elementos horizontalmente */
-      margin-right: 30px;
-    }
-  
-    .btn-login {
-      margin-left: auto; /* Mueve el botón a la derecha */
-    }
-  }
-  /* Media query para ocultar los enlaces de redes sociales y el botón de inicio de sesión en pantallas medianas */
-  @media only screen and (max-width: 1280px) {/*992*/
-    .navbar-brand .fa {
-      display: none; /* Ocultar los iconos de redes sociales */
-    }
-    
-    .btn-login {
-      display: none; /* Ocultar el botón de inicio de sesión */
-    }
-    #politicas {
-      display: none; /* Ocultar el copyright */
-    }
-    #redes .fa{
-      display: none; /* Ocultar redes sociales footer */
-    }
-    #boton{
-      display: flex;
-      justify-content: center; /* Centrar horizontalmente */
-      align-items: center; /* Centrar verticalmente */
-      width: 200px; /* Ancho deseado para el contenedor del botón */
-    margin: 0 auto; /* Centra horizontalmente el contenedor */
-    }
-  }
-  
-  
-  /* Welcome Section */
-  .welcome-section {
-    background-color: #242424;
-    color: #ffffff;
-    padding: 50px 0;
-    flex: 1; /* Ocupa todo el espacio disponible */
-    display: flex;
-    justify-content: center; /* Centrar contenido horizontalmente */
-    align-items: center; /* Centrar contenido verticalmente */
-    text-align: center; /* Centrar texto */
-  }
-  
-  .welcome-content {
-    max-width: 800px; /* Establecer un ancho máximo para el contenido */
-    margin: 0 auto; /* Centrar contenido horizontalmente */
-  }
-  
-  .welcome-image img {
-    max-width: 100%;
-  }
-  
-  /* Contact Section */
-  .contact-section {
-    padding: 50px 0;
-  }
-  
-  .contact-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .contact-info {
-    flex: 1;
-  }
-  
-  .contact-map {
-    flex: 1;
-  }
-  
-  .contact-info h2 {
-    margin-bottom: 20px;
-  }
-  
-  .contact-info p {
-    margin-bottom: 10px;
-  }
-  
-  .contact-info a {
-    color: #f6c337;
-  }
-  
-  
-  .footer {
-    background-color:#333; 
-  }
-  .footer #redes a{
-    padding: 0 10px;
-  }
-  
-  
-  
-  
-  /* Media queries */
-  
-  
-  /* Media Query para ajustar estilos en dispositivos móviles */
-  @media only screen and (max-width: 768px) {
-  /* Navbar */
-  .navbar {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .nav-links {
-    margin-top: 20px;
-  }
-  
-  .nav-links li {
-    margin: 10px 0;
-  }
-  
-  .navbar-brand .fa {
-      font-size: 4vw; /* Tamaño para pantallas más pequeñas */
-    }
-  
-  
-  .btn-login {
-    margin-top: 20px;
-  }
-  
-  /* Welcome Section */
-  .welcome-section h1 {
-    font-size: 28px;
-  }
-  
-  .welcome-section p {
-    font-size: 16px;
-    margin-top: 20px;
-  }
-  
-  /* Contact Section */
-  .contact-section {
-    padding: 30px 0;
-  }
-  
-  .contact-content {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .contact-info {
-    margin-bottom: 30px;
-    text-align: center;
-  }
-  
-  .contact-info h2 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  }
-  
-  /* Media Query adicional si es necesario */
-  @media only screen and (max-width: 480px) {
-  /* Aquí puedes agregar estilos adicionales específicos para dispositivos con pantallas más pequeñas */
-  }
-  
-  
-  
-  /* Estilos para el navbar en PC */
-  @media only screen and (min-width: 769px) {
-  .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .navbar-brand {
-    margin-right: 20px; /* Aumenta el margen para espacio adicional */
-  }
-  
-  .nav-links {
-    display: flex;
-    margin-right: 30px;
-  }
-  
-  .nav-links li {
-    margin-right: 30px;
-  }
-  
-  .btn-login {
-    margin-left: auto; /* Mueve el botón a la derecha */
-  }
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  min-height: 100vh; /* Establecer altura mínima para ocupar toda la altura de la ventana */
+  display: flex;
+  flex-direction: column; /* Alinear contenido en columna */
+}
+
+/* Contenedor de la barra de navegación */
+.navbar {
+  width: 100%; /* Ocupa todo el ancho de la pantalla */
+  background-color: #f6c337; /* Color de fondo */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Estilos de enlaces en el navbar */
+.navbar a {
+  padding: 10px 20px;
+  border-radius: 20px; /* Redondea las esquinas del contenedor */
+  text-decoration: none;
+  color: #242424;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+/* Cambio de color al pasar el mouse por encima */
+.navbar a:hover {
+  background-color: #ddd; /* Cambia al color deseado */
+  color: black; /* Cambia el color del texto */
+}
+
+/* Estilos para la marca del navbar */
+.navbar-brand {
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  gap: 10px; /* Espaciado entre los íconos de redes sociales */
+}
+
+/* Estilos para los enlaces de navegación */
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; /* Espaciado entre los elementos del menú */
+}
+
+/* Botón de inicio de sesión */
+.btn-login {
+  padding: 10px 20px;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  color: #444141;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-login:hover {
+  background-color: #555;
+}
+
+.btn-login-cerrar {
+  padding: 10px 20px;
+  background-color: #dc3545; /* Cambia el color de fondo a rojo */
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Dropdown menu */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.btn-login-dropdown {
+  background-color: #f6c337;
+  border: none;
+  cursor: pointer;
+  padding: 8px 16px; /* Modificar el padding para ajustar el tamaño del botón */
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+/* Dropdown menu */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0; /* Alinear a la derecha */
+  background-color: #fff; /* Fondo blanco */
+  border-radius: 8px; /* Bordes redondeados */
+  min-width: 200px; /* Ancho mínimo */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Sombra para darle profundidad */
+  z-index: 1000;
+  margin-top: 5px;
+  overflow: hidden; /* Ocultar desbordamiento */
+}
+
+.dropdown-content a {
+  color: #333; /* Color del texto */
+  padding: 12px 16px; /* Espaciado interno */
+  text-decoration: none;
+  display: block;
+  font-size: 16px; /* Tamaño de letra */
+  transition: background-color 0.3s, color 0.3s; /* Transiciones suaves */
+}
+
+.dropdown-content a:hover {
+  background-color: #e6e6e6;; /* Fondo al pasar el mouse */
+  color: #000; /* Color del texto al pasar el mouse */
+}
+
+/* Mostrar el dropdown cuando esté activo */
+.dropdown.active .dropdown-content {
+  display: block;
+}
+
+/* Estilos para el botón del dropdown */
+.dropdown:hover .btn-login-dropdown {
+  background-color: #ddd;
+}
+
+.btn-login-dropdown {
+  background-color: #f6c337;
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+
+
+/* Welcome Section */
+.welcome-section {
+  background-color: #242424;
+  color: #ffffff;
+  padding: 50px 0;
+  flex: 1; /* Ocupa todo el espacio disponible */
+  display: flex;
+  justify-content: center; /* Centrar contenido horizontalmente */
+  align-items: center; /* Centrar contenido verticalmente */
+  text-align: center; /* Centrar texto */
+}
+
+.welcome-content {
+  max-width: 800px; /* Establecer un ancho máximo para el contenido */
+  margin: 0 auto; /* Centrar contenido horizontalmente */
+}
+
+.welcome-image img {
+  max-width: 100%;
+}
+
+/* Contact Section */
+.contact-section {
+  padding: 50px 0;
+}
+
+.contact-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.contact-info {
+  flex: 1;
+}
+
+.contact-map {
+  flex: 1;
+}
+
+.contact-info h2 {
+  margin-bottom: 20px;
+}
+
+.contact-info p {
+  margin-bottom: 10px;
+}
+
+.contact-info a {
+  color: #f6c337;
+}
+
+
+.footer {
+  background-color:#333; 
+}
+.footer #redes a{
+  padding: 0 10px;
+}
+
+
+

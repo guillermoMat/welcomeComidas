@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Inicio</title>
     <link rel="stylesheet" href="/static/css/styles.css">
 
@@ -14,196 +15,186 @@
 
 </head>
 <body>
+  
   <nav class="navbar" id="home">
-    <div class="container">
-      <div class="navbar-brand" style="margin-left: 15px;">
-        <a class="fa fa-facebook-official w3-hover-opacity" style="color: #3b5998; text-decoration: none; " href="index2.html"></a>
-        <a class="fa fa-instagram w3-hover-opacity" style="color: #e4405f; text-decoration: none; " href="index2.html"></a>
-        <a class="fa fa-whatsapp w3-hover-opacity" style="color: #25d366; text-decoration: none;" href="index2.html"></a>
-      </div>
-    
-      <ul class="nav-links">
-        <li ><a href="#comidas" >Comidas</a></li>
-        <li><a href="#contactanos" >Contáctanos</a></li>
-        <!-- 1 
-        <li><a href="#" >Menú de Compra</a></li>
-        -->
-        <li><a href="{% url 'categorias' %}" >Menú de Compra</a></li>
-        
-        
-      </ul>
-      
-   
- <div class="dropdown">
-  <button class="btn-login-dropdown" id="dropdownBtn" style="background-color: #f6c337; border: none; cursor: pointer;">
-    {% if user.is_authenticated %}
-      {{ user.get_full_name }} <i class="fa fa-caret-down"></i> <!-- Mostrar el nombre de usuario con icono de flecha -->
-    {% else %}
-      <a href="{% url 'login' %}" class="btn-login">Iniciar Sesión</a>
-    {% endif %}
-  </button>
-  <div class="dropdown-content" id="myDropdown">
-    {% if user.is_authenticated %}
-      <a href="{% url 'add_product' %}" target="_blank">Añadir nuevo producto</a>
-      <a href="{% url 'select_category_to_edit' %}" target="_blank">Editar producto</a>
-      <a href="{% url 'logout' %}">Cerrar Sesión</a>
-    {% endif %}
-  </div>
-</div>
-      <!-- Fin del Dropdown -->
-   
-      
-
-      
+    <div class="navbar-brand" style="margin-left: 15px;">
+        <a class="fa fa-facebook-official w3-hover-opacity" style="color: #3b5998; text-decoration: none; font-size: 44px;" href="https://www.facebook.com/welcomecomidas1" target="_blank"></a>
+        <a class="fa fa-instagram w3-hover-opacity" style="color: #e4405f; text-decoration: none;font-size: 44px;" href="https://www.instagram.com/welcomecomidas/" target="_blank"></a>
+        <a class="fa fa-whatsapp w3-hover-opacity" style="color: #25d366; text-decoration: none;font-size: 44px;" href="https://wa.me/c/5493625163856" target="_blank"></a>
     </div>
-  </nav>
-  <script>
- // Función para mostrar u ocultar las opciones del menú desplegable
- function toggleDropdown() {
-    var dropdownContent = document.getElementById("myDropdown");
-    if (dropdownContent.style.display === "block") {
-      dropdownContent.style.display = "none";
-    } else {
-      dropdownContent.style.display = "block";
-    }
+
+    <ul class="nav-links">
+        <li style="margin: 10px -8px;"><a href="#comidas">Galería</a></li>
+        <li style="margin: 10px -8px;"><a href="#contactanos">Contáctanos</a></li>
+        <li style="margin: 10px -8px;"><a href="{% url 'categorias' %}">Catálogo</a></li>
+    </ul>
+
+    <div class="dropdown">
+        <button class="btn-login-dropdown" id="dropdownBtn" style="background-color: #f6c337; border: none; cursor: pointer;">
+            {% if user.is_authenticated %}
+            <span class="user-name">
+              {{ user.get_full_name }}
+            </span> <i class="fa fa-caret-down"></i>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn-login" style="padding: 10px 20px;font-size: 18px;">Iniciar Sesión</a>
+            {% endif %}
+        </button>
+        <div class="dropdown-content" id="myDropdown">
+            {% if user.is_authenticated %}
+                <a href="{% url 'add_product' %}" target="_blank">Añadir nuevo producto</a>
+                <a href="{% url 'select_category_to_edit' %}" target="_blank">Editar producto</a>
+                <a href="{% url 'logout' %}">Cerrar Sesión</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
+
+
+<script>
+  // Función para mostrar u ocultar las opciones del menú desplegable
+  function toggleDropdown() {
+      var dropdown = document.querySelector('.dropdown');
+      dropdown.classList.toggle('active');
   }
 
   // Agrega un evento clic al botón para llamar a la función toggleDropdown
   document.getElementById("dropdownBtn").addEventListener("click", toggleDropdown);
-  </script>
+</script>
 
-  
-  
-<!--
-  <nav class="navbar" id="home">
-  <div class="container">
-    
-    <h4 class="navbar-brand">Welcome Comidas</h4>
-     
-     <i class="fa fa-facebook-official w3-hover-opacity" style="color: #3b5998; font-size: 48px;"></i>
-    <i class="fa fa-instagram w3-hover-opacity" style="color: #e4405f; font-size: 48px;"></i>
-    <ul class="nav-links">
-      <li><a href="#comidas">Comidas</a></li>
-      <li><a href="#contactanos">Contáctanos</a></li>
-      <li><a href="#menucompra">Menú de Compra</a></li>
-    </ul>
-    <button class="btn-login">Iniciar Sesión</button>
-  </div>
-</nav>
--->
 
 <!-- Sección de Bienvenida -->
-<section class="welcome-section" >
-  <div class="container">
-    <div class="welcome-content">
-      <div class="welcome-image">
-        <img src="/static/img/logowelcome23.jpg" alt="Imagen Bienvenida">
-      </div>
-      <div class="welcome-text">
-        <h1>Welcome Comidas</h1>
-        <p>¡Sumérgete en un mundo y descubre nuestras especialidades!</p>
-      </div>
+<section class="welcome-section">
+    <div class="container">
+        <div class="welcome-content">
+            <div class="welcome-image">
+                <img src="/static/img/logowelcome23.jpg" alt="Imagen Bienvenida">
+            </div>
+            <div class="welcome-text">
+                <h1>Welcome Comidas</h1>
+                <p>¡Realiza tu pedido por WhatsApp!</p>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
 
-<!-- Page content -->
-<section id="comidas" >
-<div class="w3-content w3-padding" style="max-width:1564px" >
+<!-- GALERIA -->
 
-  <!-- Project Section -->
-  <div class="w3-container w3-padding-32" id="projects">
-    <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Catalogo</h3>
-  </div>
-  <div class="w3-row-padding">
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Summer House</div>
-        <img src="/static/img/product_images/burguer3.jpg" alt="House" style="width:99%">
-      </div>
+<section id="comidas" class="comidas-grid">
+  <div class="w3-content w3-padding" style="max-width:1564px" >
+  
+    <!-- Project Section -->
+    <div class="w3-container w3-padding-32" id="projects">
+      <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Galería</h3>
     </div>
+    <div class="w3-row-padding">
+     
+      <div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-display-container media-container">
+          <div class="w3-display-topleft w3-black w3-padding">Summer House</div>
+          <img src="/static/img/product_images/burguer3.jpg" class="media-content" alt="House">
+        </div>
+      </div>
+      
+     
+      <div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-display-container media-container" >
+          <div class="w3-display-topleft w3-black w3-padding">Barn House</div>
+          <img src="/static/img/product_images/papasVarias.jpg" class="media-content" alt="House">
+        </div>
+      </div>
+  
+      <div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-display-container media-container">
+          <div class="w3-display-topleft w3-black w3-padding">Barn House</div>
+          <video autoplay muted loop class="responsive-media video-media">
+            <source src="/static/img/product_videos/disfrutandoBurguer.mp4" class="media-content" type="video/mp4">
+            Tu navegador no soporta el elemento de video.
+          </video>
+        </div>
+      </div>
+  
+         
+  
+      <div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-display-container media-container">
+          <div class="w3-display-topleft w3-black w3-padding">Renovated</div>
+          <img src="/static/img/product_images/burguer4.jpg" class="media-content" alt="House">
+        </div>
+      </div>
+      <div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-display-container media-container">
+          <div class="w3-display-topleft w3-black w3-padding">Barn House</div>
+          <img src="/static/img/negocio1.jpg" class="media-content" alt="House">
+        </div>
+      </div>
+      <div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-display-container media-container">
+          <div class="w3-display-topleft w3-black w3-padding">Barn House</div>
+          <img src="/static/img/product_images/miga1.jpg" class="media-content" alt="House">
+        </div>
+      </div>
+      <div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-display-container media-container">
+          <div class="w3-display-topleft w3-black w3-padding">Barn House</div>
+          <img src="/static/img/product_images/mila1.jpg" class="media-content" alt="House">
+        </div>
+      </div>
+      
+      <!--
+      <div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-display-container">
+          <div class="w3-display-topleft w3-black w3-padding">Barn House</div>
+          <img src="/static/img/product_images/papas1.jpg" alt="House" style="width:100%; height: auto;">
+        </div>
+      </div>
+      -->
+      <div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-display-container media-container">
+          <div class="w3-display-topleft w3-black w3-padding">Barn House</div>
+          <img src="/static/img/product_images/burguer1.jpg" class="media-content" alt="House">
+        </div>
+      </div>
+  
+     <!-- Video Section -->
+     <div class="w3-col l3 m6 w3-margin-bottom">
+      <div class="w3-display-container media-container">
+        <div class="w3-display-topleft w3-black w3-padding">Video 1</div>
+        <video autoplay muted loop class="responsive-media video-media">
+          <source src="/static/img/product_videos/armadoBurguer.mp4" class="media-content" type="video/mp4">
+          Tu navegador no soporta el elemento de video.
+        </video>
+      </div>
+    </div> 
     
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Brick House</div>
-        <img src="/static/img/product_images/lomo1.jpg" alt="House" style="width:100%; height: auto;">
+  
+      <div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-display-container media-container">
+          <div class="w3-display-topleft w3-black w3-padding">Barn House</div>
+          <img src="/static/img/product_images/cajaProducto.jpg" class="media-content" alt="House">
+        </div>
       </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Barn House</div>
-        <img src="/static/img/product_images/papasVarias.jpg" alt="House" style="width:100%; height: auto;">
+      <div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-display-container media-container">
+          <div class="w3-display-topleft w3-black w3-padding">Barn House</div>
+          <img src="/static/img/product_images/burguer2.jpg" class="media-content" alt="House">
+        </div>
       </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Renovated</div>
-        <img src="/static/img/product_images/burguer4.jpg" alt="House" style="width:100%; height: auto;">
+      
+      <div class="w3-col l3 m6 w3-margin-bottom">
+        <div class="w3-display-container media-container">
+          <div class="w3-display-topleft w3-black w3-padding">Barn House</div>
+          <img src="/static/img/product_images/esteFunciona.jpg" class="media-content" alt="House" >
+        </div>
       </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Barn House</div>
-        <img src="/static/img/negocio1.jpg" alt="House" style="width:100%; height: auto;">
-      </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Barn House</div>
-        <img src="/static/img/product_images/miga1.jpg" alt="House" style="width:100%; height: auto;">
-      </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Barn House</div>
-        <img src="/static/img/product_images/mila1.jpg" alt="House" style="width:100%; height: auto;">
-      </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Barn House</div>
-        <img src="/static/img/product_images/papas1.jpg" alt="House" style="width:100%; height: auto;">
-      </div>
-    </div>
     
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Barn House</div>
-        <img src="/static/img/product_images/burguer1.jpg" alt="House" style="width:100%; height: auto;">
-      </div>
+       
+  
     </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Barn House</div>
-        <img src="/static/img/product_images/cajaProducto.jpg" alt="House" style="width:100%; height: auto;">
-      </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Barn House</div>
-        <img src="/static/img/product_images/burguer2.jpg" alt="House" style="width:100%; height: auto;">
-      </div>
-    </div>
-    <div class="w3-col l3 m6 w3-margin-bottom">
-      <div class="w3-display-container">
-        <div class="w3-display-topleft w3-black w3-padding">Barn House</div>
-        <img src="/static/img/product_images/esteFunciona.jpg" alt="House" style="width:100%; height: auto;">
-      </div>
-    </div>
-
   </div>
-</div>
-</section>
-<!-- estilo para foto: style="width:360px; height: 640px;" -->
+  </section>
+  
 
-
-<!-- <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
- -->
-
- <!-- Aquí iría el mapa de Google Maps 
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3121.0410099357977!2d-122.41941568460375!3d37.77492997975728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085808a40d7cc59%3A0x9a8c95e9ec4b7c93!2sGolden%20Gate%20Bridge!5e0!3m2!1sen!2sus!4v1625038055896!5m2!1sen!2sus" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-        -->
 
 <!-- Sección de Contáctanos -->
 
@@ -231,7 +222,7 @@
                 <i class="fa fa-whatsapp fa-fw w3-hover-text-black w3-xlarge w3-margin-right" style="margin-bottom:20px ;"></i> 0362 516-3856<br>
                 <a href="https://wa.me/c/5493625163856" target="_blank" style="text-decoration: none; color: #007bff; font-size: 16px;">
                     <i class="fa fa-cutlery fa-fw w3-hover-text-black w3-xlarge w3-margin-right" style="margin-bottom:20px;"></i>
-                    Ver Catálogo en WhatsApp</a><br>
+                    Realizar pedido por WhatsApp</a><br>
                 <!-- href="https://wa.me/c/5493625163856"       -->
                 <i class="fa fa-clock-o fa-fw w3-hover-text-black w3-xlarge w3-margin-right" style="margin-bottom:20px ;"></i>Jueves a Martes, de 20:00hs a 00:00hs<br>
                 <!-- Miercoles X negra
@@ -239,53 +230,35 @@
                 -->
                 <i class="fa fa-times fa-fw w3-hover-text-black w3-xlarge w3-margin-right" style="color: red;"></i>Miércoles Cerrado<br>
 
-
             </div>
           
         </div>
     </div>
 </div>
 </section>
-
-
-
-
-
-
-  <!-- Footer 
-<footer class="w3-padding-64 footer" style="display: flex; justify-content: space-between; align-items: center;">
-  <div  id="politicas">
-      <a href="#" style="color: aliceblue;">Política de Privacidad</a>
-      <a href="#" style="color: aliceblue;">Términos de Uso</a>
-  </div>
-  <div class="w3-center" id="boton">
-      <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>Ascender</a>
-  </div>
-  <div class="w3-xlarge w3-section" id="redes">
-      <i class="fa fa-facebook-official w3-hover-opacity"></i>
-      <i class="fa fa-instagram w3-hover-opacity"></i>
-  </div>
-</footer>
+<!--  
+style="display: flex; justify-content: space-between; align-items: center;padding:0 20px;"
 -->
 
-<footer class="w3-padding-64 footer" style="display: flex; justify-content: space-between; align-items: center; padding: 0 20px;">
+
+<footer class="w3-padding-64 footer">
   <div id="politicas">
-    <!--
-    <a href="#" style="color: aliceblue;">Política de Privacidad</a>
-    <a href="#" style="color: aliceblue;">Términos de Uso</a>
- -->
-      <p style="color: aliceblue;">&copy; 2024 WelcomeComidas. Todos los derechos reservados.</p>
+    <p>&copy; 2024 WelcomeComidas. Todos los derechos reservados.</p>
   </div>
   <div class="w3-center" id="boton">
-    <a href="#home" class="w3-button w3-light-grey"><i class="fa fa-arrow-up w3-margin-right"></i>Ascender</a>
+    <a href="#home" class="w3-button w3-light-grey">
+      <i class="fa fa-arrow-up w3-margin-right"></i>Ascender
+    </a>
   </div>
   <div class="w3-xlarge w3-section" id="redes">
-    <a class="fa fa-facebook-official w3-hover-opacity" style="color: #3b5998; font-size: 48px;margin-right: 10px;text-decoration: none" href="index2.html"></a>
-    <a class="fa fa-instagram w3-hover-opacity" style="color: #e4405f; font-size: 48px;margin-right: 10px;text-decoration: none" href="index2.html"></a>
-    <a class="fa fa-whatsapp w3-hover-opacity" style="color: #25d366; font-size: 48px;text-decoration: none;" href="index2.html"></a>
-
+    <a class="fa fa-facebook-official w3-hover-opacity" href="https://www.facebook.com/welcomecomidas1" target="_blank" aria-label="Facebook"></a>
+    <a class="fa fa-instagram w3-hover-opacity" href="https://www.instagram.com/welcomecomidas" target="_blank" aria-label="Instagram"></a>
+    <a class="fa fa-whatsapp w3-hover-opacity" href="https://wa.me/c/5493625163856" target="_blank" aria-label="WhatsApp"></a>
   </div>
 </footer>
+
+
+
 
 
 
@@ -296,3 +269,4 @@
 
 </body>
 </html>
+

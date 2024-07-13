@@ -76,7 +76,8 @@ def select_product_to_edit(request, category_id):
 
 #el que realiza el trabajo de editar:
 logger = logging.getLogger(__name__)
-"""
+
+
 @login_required
 def edit_product(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
@@ -115,7 +116,9 @@ def edit_product(request, product_id):
         form = ProductForm(instance=product)
 
     return render(request, 'opcionesUsuario/edit_product.html', {'form': form, 'product': product, 'category_id': product.category.category_id})
-"""
+
+
+
 
 #funcion para corroborar si se puede borrar las fotos
 """
@@ -131,6 +134,7 @@ def test_delete_file(request):
             return JsonResponse({'status': 'error', 'message': f'Archivo {test_file_path} no encontrado.'})
     except Exception as e:
         return JsonResponse({'status': 'error', 'message': str(e)})
+"""
 """
 @login_required
 def edit_product(request, product_id):
@@ -192,7 +196,7 @@ def clear_old_photo_session(request):
         return JsonResponse({'status': 'success'})
     return JsonResponse({'status': 'error', 'message': 'Método no permitido.'})
 
-
+"""
 
 #eliminar producto entero
 

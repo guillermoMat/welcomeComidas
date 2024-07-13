@@ -3,6 +3,8 @@
 
 {% block head_content %}
     <title>Lista de productos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 {% endblock %}
 
 <!-- Personaliza los estilos -->
@@ -55,7 +57,7 @@
 {% block content_body %}
 <div class="container">
     <div class="description-box">
-        <p>Selecciona los productos y la cantidad, una vez que hayas seleccionado todo lo deseado, haz clic en "Finalizar".</p>
+        <p>Para realizar una compra, comuníquese por WhatsApp. Toda la información necesaria se encuentra en nuestro inicio.</p>
     </div>
 
     <div class="table-responsive">
@@ -66,8 +68,8 @@
                     <th>Descripción</th>
                     <th>Imagen</th>
                     <th>Precio</th>
-                    <th>Cantidad</th>
-                    <th>Añadir al carrito</th>
+                    
+                    
                     {% block column_edit%}
                     {%endblock%}
                     
@@ -83,29 +85,11 @@
                         <td><img src="{{ product.photo.url }}" alt="Imagen del producto" class="product-image">
                         </td>
                         <td>{{ product.price }}</td><!-- Precio del producto -->
-                        <td style="text-align: center;">
-                            <select name="quantity_{{ product.product_id }}" id="quantity_{{ product.product_id }}">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                            </select>
-                        </td>
-                        <td style="text-align: center;">
-                            <input type="checkbox" name="carrito_{{ product.product_id }}" id="carrito_{{ product.product_id }}" value="{{ product.product_id }}">
-                        </td>
                         
                     </tr>
                     {% endfor %}
                     <tr>
-                        <!-- Agrega una nueva fila para el botón "Finalizar" -->
-                        <td colspan="6" style="text-align: center;">
-                            <input type="submit" value="Finalizar" style="margin-top: 10px;" id="btn-finalizar">
-                        </td>
+                       
                         {%block row%}
                         {%endblock%}
 
@@ -119,32 +103,5 @@
 
 
 {% block script_personalizados %}
-<script>
-    // Para que el boton "finalizar" funcione fuera del formulario
-    document.addEventListener('DOMContentLoaded', function() {
-        // Obtener referencia al formulario y al botón
-        var form = document.getElementById('product-selection-form');
-        var btnFinalizar = document.getElementById('btn-finalizar');
 
-        // Agregar un evento al formulario para escuchar el envío
-        form.addEventListener('submit', function(event) {
-            // Obtener todos los checkboxes
-            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            var isChecked = false;
-
-            // Verificar si al menos uno está marcado
-            checkboxes.forEach(function(checkbox) {
-                if (checkbox.checked) {
-                    isChecked = true;
-                }
-            });
-
-            // Si no hay ninguno marcado, detener el envío del formulario
-            if (!isChecked) {
-                event.preventDefault();
-                alert('Por favor, seleccione al menos un producto antes de finalizar.');
-            }
-        });
-    });
-</script>
 {% endblock %}
