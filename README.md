@@ -1,7 +1,8 @@
 # Welcome Comidas
 
 ## Descripción
-Este proyecto es una aplicación web diseñada para facilitar la gestión y visualización de menús y pedidos en un entorno de comidas rápidas o restaurantes. Incluye módulos para usuarios, menús, y pedidos, integrados con un back-end robusto y un front-end funcional.
+Este proyecto es una aplicación web diseñada como parte de la materia **Práctica Supervisada**. Se trabajó en el diseño y desarrollo de un sistema web para un cliente real, un lugar de comidas rápidas, con el objetivo de facilitar la gestión de menús y pedidos. El proyecto fue aprobado satisfactoriamente, destacando su funcionalidad y diseño acorde a las necesidades del cliente.
+.
 
 ## Funcionalidades
 - Registro y administración de usuarios.
@@ -25,9 +26,12 @@ Este proyecto es una aplicación web diseñada para facilitar la gestión y visu
 
 2. Crea y activa un entorno virtual
   ```bash
-   python3 -m venv env
-   source env/bin/activate
+  python3 -m venv env
+  source env/bin/activate
+  ```
+
 3.  Instala las dependencias necesarias
   `pip install -r requirements.txt`
+  
 4. Ejecuta el servidor de desarrollo
   `python manage.py runserver`
